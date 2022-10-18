@@ -147,7 +147,7 @@
 
   #hat {
     z-index: 100;
-    max-height: 50vh;
+    max-height: 33vh;
     max-width: 50vw;
   }
 

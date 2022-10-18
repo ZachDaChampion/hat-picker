@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 
 export interface PermamentStore {
   lists: ListStore[];
@@ -22,7 +22,24 @@ export interface DrawnStore {
 
 function read_from_storage(): PermamentStore {
   const data = localStorage.getItem("data");
-  return data ? JSON.parse(data) : { lists: [] };
+  return data
+    ? JSON.parse(data)
+    : {
+        lists: [
+          {
+            name: "Default",
+            count_per_draw: 1,
+            in_hat: [],
+            drawn: [],
+          },
+          {
+            name: "Default 2",
+            count_per_draw: 1,
+            in_hat: [],
+            drawn: [],
+          }
+        ],
+      };
 }
 
 function write_to_storage(data: PermamentStore) {
@@ -30,6 +47,15 @@ function write_to_storage(data: PermamentStore) {
 }
 
 export const persistant_store = writable(read_from_storage());
+
+export const current_list_idx = writable(0);
+
+export const current_list = derived(
+  [persistant_store, current_list_idx],
+  ([$persistant_store, $current_list_idx]) => {
+    return $persistant_store.lists[$current_list_idx];
+  }
+);
 
 persistant_store.subscribe((data) => {
   write_to_storage(data);
