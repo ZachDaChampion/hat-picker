@@ -14,7 +14,9 @@
     bind:this={dropdown}
     title="Hats"
     on:change={() => {
-      $current_list_idx = selected;
+      if (selected == -1) {
+        // TODO: Add new hat
+      } else $current_list_idx = selected;
       dropdown.blur();
     }}
   >
