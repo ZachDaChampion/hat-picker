@@ -5,7 +5,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: #404040;
   background-color: #f9f9f9;
 
   font-synthesis: none;
@@ -30,14 +30,7 @@ body {
   text-align: center;
 }
 
-button {
-  background-color: transparent;
-  border: none;
-  color: #404040;
-  cursor: pointer;
-}
-
-select {
+select, button {
   background-color: transparent;
   border: none;
   color: #404040;

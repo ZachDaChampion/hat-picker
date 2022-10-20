@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { current_list } from "../store";
 
-  const hat_orig_width = 1356;
+  const hat_orig_width = 1450;
   const jump_duration = 1000;
   const card_anim_count = 10;
   const card_anim_width = 0.5;
@@ -45,7 +46,9 @@
   let cards: CardAnimation[] = [];
   function sprayAnimation() {
     cards = [];
-    for (let i = 0; i < card_anim_count; i++) {
+    // const count = card_anim_count;
+    const count = Math.min(card_anim_count, $current_list.in_hat.length);
+    for (let i = 0; i < count; i++) {
       cards.push({
         x: canvas.width / 2,
         y: canvas.height,
@@ -148,7 +151,7 @@
   #hat {
     z-index: 100;
     max-height: 33vh;
-    max-width: 50vw;
+    max-width: 67vw;
   }
 
   #hat:hover {

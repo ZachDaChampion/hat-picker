@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { persistant_store, current_list_idx, current_list } from "../store";
+  import { persistant_store, current_list_idx } from "../store";
 
   let dropdown: HTMLSelectElement;
   let selected = 0;
@@ -21,6 +21,7 @@
     {#each $persistant_store.lists as store, i}
       <option value={i}>{store.name}</option>
     {/each}
+    <option value={-1}>Create New Hat</option>
   </select>
   <button id="add_btn" type="button"
     ><img id="add_btn_img" src="/add_icon.svg" alt="Add icon" /><span
