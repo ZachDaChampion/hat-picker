@@ -21,7 +21,7 @@ export interface DrawnStore {
 }
 
 function read_from_storage(): PermamentStore {
-  const data = localStorage.getItem("data");
+  const data = localStorage.getItem("zachchampion_hatpicker_data");
   return data
     ? JSON.parse(data)
     : {
@@ -37,7 +37,7 @@ function read_from_storage(): PermamentStore {
 }
 
 function write_to_storage(data: PermamentStore) {
-  localStorage.setItem("data", JSON.stringify(data));
+  localStorage.setItem("zachchampion_hatpicker_data", JSON.stringify(data));
 }
 
 export const persistant_store = writable(read_from_storage());
