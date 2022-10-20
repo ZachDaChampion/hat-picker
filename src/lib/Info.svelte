@@ -2,7 +2,7 @@
   import { persistant_store, current_list } from "../store";
 </script>
 
-<div id="container">
+<div id="Info_container">
   <h1>Click hat to draw</h1>
 </div>
 
@@ -13,7 +13,7 @@
     opacity: 0.25;
   }
 
-  #container {
+  #Info_container {
     z-index: -10;
     position: absolute;
     top: 0;

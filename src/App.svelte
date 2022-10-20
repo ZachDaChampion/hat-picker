@@ -3,6 +3,7 @@
   import Info from "./lib/Info.svelte";
   import TopBar from "./lib/TopBar.svelte";
   import DrawCountSelecter from "./lib/DrawCountSelector.svelte";
+  import HatCreator from "./lib/HatCreator.svelte";
 </script>
 
 <main>
@@ -10,6 +11,7 @@
   <Info />
   <Hat />
   <DrawCountSelecter />
+  <HatCreator />
 </main>
 
 <style>

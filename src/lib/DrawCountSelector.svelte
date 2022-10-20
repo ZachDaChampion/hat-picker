@@ -9,13 +9,13 @@
   }
 </script>
 
-<div id="container">
+<div id="DrawCountSelector_container">
   <h1>Draw this many cards:</h1>
-  <div id="btn_row">
+  <div id="DrawCountSelector_btn_row">
     {#each [1, 2, 3, 4, 5] as i}
       <button
-        class="single_num_btn {$current_list.count_per_draw === i
-          ? 'selected'
+        class="DrawCountSelector_single_num_btn {$current_list.count_per_draw === i
+          ? 'DrawCountSelector_selected'
           : ''}"
         on:click={() => set_draw_count(i)}>{i}</button
       >
@@ -24,7 +24,7 @@
 </div>
 
 <style>
-  #container {
+  #DrawCountSelector_container {
     z-index: 20;
     position: absolute;
     top: 67%;
@@ -37,14 +37,14 @@
     align-items: center;
   }
 
-  #btn_row {
+  #DrawCountSelector_btn_row {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
 
-  .single_num_btn {
+  .DrawCountSelector_single_num_btn {
     font-size: 3em;
     width: 1.5em;
     height: 1.5em;
@@ -54,11 +54,11 @@
     transition: 250ms;
   }
 
-  .single_num_btn:hover:not(.selected) {
+  .DrawCountSelector_single_num_btn:hover:not(.DrawCountSelector_selected) {
     background-color: #e0e0e0;
   }
 
-  .selected {
+  .DrawCountSelector_selected {
     background-color: #404040;
     color: white;
   }

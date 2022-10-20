@@ -5,8 +5,6 @@
   const hat_orig_width = 1450;
   const jump_duration = 1000;
   const card_anim_count = 10;
-  const card_anim_width = 0.5;
-  const card_anim_height = 0.5;
 
   let img_scale = 0;
 
@@ -121,26 +119,26 @@
 />
 
 <canvas
-  id="canvas"
+  id="Hat_canvas"
   height={hat_rect?.top || 0}
   width={window_width}
   bind:this={canvas}
 />
 
-<div id="hat_container" bind:this={hat_container}>
+<div id="Hat_hat_container" bind:this={hat_container}>
   <img
     bind:this={hat}
-    id="hat"
+    id="Hat_hat"
     src="/hat.png"
     alt="Hat"
-    class={jumping ? "jumping" : ""}
+    class={jumping ? "Hat_jumping" : ""}
     on:click={jump}
     on:keydown={jump}
   />
 </div>
 
 <style>
-  #canvas {
+  #Hat_canvas {
     position: absolute;
     top: 0;
     left: 50%;
@@ -148,18 +146,18 @@
     z-index: -1;
   }
 
-  #hat {
+  #Hat_hat {
     z-index: 100;
     max-height: 33vh;
     max-width: 67vw;
   }
 
-  #hat:hover {
+  #Hat_hat:hover {
     animation: shake 1s infinite;
     cursor: pointer;
   }
 
-  #hat.jumping {
+  #Hat_hat.Hat_jumping {
     animation: jump 1s infinite;
   }
   @keyframes shake {

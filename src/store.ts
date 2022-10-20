@@ -57,6 +57,8 @@ export const current_list = derived(
   }
 );
 
+export const hat_creator_visible = writable(false);
+
 persistant_store.subscribe((data) => {
   write_to_storage(data);
 });
