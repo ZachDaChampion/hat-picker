@@ -2,7 +2,7 @@
   import Hat from "./lib/Hat.svelte";
   import Info from "./lib/Info.svelte";
   import TopBar from "./lib/TopBar.svelte";
-  import DrawCountSelecter from "./lib/DrawCountSelecter.svelte";
+  import DrawCountSelecter from "./lib/DrawCountSelector.svelte";
 </script>
 
 <main>
