@@ -66,6 +66,8 @@
     display: inline-flex;
     align-items: center;
     transition: 250ms;
+    border: none;
+    outline: none;
   }
 
   #TopBar_add_btn:hover,

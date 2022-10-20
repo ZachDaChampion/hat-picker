@@ -27,17 +27,11 @@ function read_from_storage(): PermamentStore {
     : {
         lists: [
           {
-            name: "Default",
+            name: "Example Hat",
             count_per_draw: 1,
-            in_hat: [],
+            in_hat: [{ name: "Example Item" }],
             drawn: [],
           },
-          {
-            name: "Default 2",
-            count_per_draw: 1,
-            in_hat: [],
-            drawn: [],
-          }
         ],
       };
 }

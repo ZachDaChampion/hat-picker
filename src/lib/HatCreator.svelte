@@ -7,7 +7,18 @@
     current_list_idx,
   } from "../store";
 
-  // let list_name = "";
+  if ($persistant_store.lists.length == 0) {
+    persistant_store.update((store) => {
+      store.lists.push({
+        name: "New hat",
+        in_hat: [],
+        drawn: [],
+        count_per_draw: 1,
+      });
+      return store;
+    });
+    $hat_creator_visible = true;
+  }
 </script>
 
 <svelte:window
