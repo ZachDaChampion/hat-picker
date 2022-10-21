@@ -1,11 +1,16 @@
 <script lang="ts">
-  import { scale } from "svelte/transition";
+  import { crossfade, scale } from "svelte/transition";
+  import { flip } from "svelte/animate";
   import {
     hat_creator_visible,
-    current_list,
     persistant_store,
     current_list_idx,
   } from "../store";
+
+  import { v4 as uuidv4 } from "uuid";
+  import { transition_in, transition_out } from "svelte/internal";
+
+  let content;
 
   if ($persistant_store.lists.length == 0) {
     persistant_store.update((store) => {
@@ -19,6 +24,24 @@
     });
     $hat_creator_visible = true;
   }
+
+  function add_card() {
+    persistant_store.update((store) => {
+      store.lists[$current_list_idx].in_hat.push({ name: "", uuid: uuidv4() });
+      return store;
+    });
+    setTimeout(() => {
+      scroll_to_bottom(content);
+    }, 250);
+  }
+
+  function focus_on_me(el) {
+    el.focus();
+  }
+
+  const scroll_to_bottom = async (node) => {
+    node.scroll({ top: node.scrollHeight, behavior: "smooth" });
+  };
 </script>
 
 <svelte:window
@@ -45,19 +68,45 @@
         alt="Close icon"
       />
     </button>
-    <div id="HatCreator_content">
+    <div id="HatCreator_content" bind:this={content}>
       <input
         type="text"
         id="HatCreator_name_input"
         placeholder="Hat name"
         bind:value={$persistant_store.lists[$current_list_idx].name}
       />
-      {#each $current_list.in_hat as i}
-        <div class="HatCreator_card">
-          <p>card</p>
+      {#each $persistant_store.lists[$current_list_idx].in_hat as card, i (card.uuid)}
+        <div
+          class="HatCreator_card"
+          in:scale={{}}
+          animate:flip={{ duration: 250 }}
+        >
+          <div
+            class="HatCreator_card_input"
+            contenteditable="true"
+            placeholder="Create New Card"
+            use:focus_on_me
+            bind:innerHTML={card.name}
+          />
+          <button
+            class="HatCreator_card_delete_btn"
+            type="button"
+            on:click={() => {
+              persistant_store.update((store) => {
+                store.lists[$current_list_idx].in_hat.splice(i, 1);
+                return store;
+              });
+            }}
+          >
+            <img
+              class="HatCreator_card_delete_btn_img"
+              src="/close_icon.svg"
+              alt="Close icon"
+            />
+          </button>
         </div>
       {/each}
-      <button id="HatCreator_add_card_btn">
+      <button id="HatCreator_add_card_btn" on:click={add_card}>
         <h2>Add card</h2>
         <img
           id="HatCreator_add_card_btn_img"
@@ -76,8 +125,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white;
-    opacity: 0.9;
+    background-color: #ffffffe6;
     z-index: 1000;
     transition: 250ms;
   }
@@ -123,10 +171,59 @@
     flex-direction: row;
     justify-content: center;
     transition: 250ms;
+    margin-bottom: 64px;
+  }
+
+  .HatCreator_card {
+    width: calc(90% - 64px);
+    max-width: 650px;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    background-color: white;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    /* transition: 250ms; */
+  }
+
+  .HatCreator_card_input {
+    font-size: 1.5em;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #404040;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    box-shadow: none;
+    resize: none;
+    padding: none;
+  }
+
+  .HatCreator_card_input[contenteditable="true"]:empty:before {
+    content: attr(placeholder);
+    opacity: 0.6;
+  }
+
+  .HatCreator_card_input::placeholder {
+    color: #b0b0b0;
+  }
+
+  .HatCreator_card_delete_btn {
+    margin-left: 32px;
+    align-items: center;
+    transition: 250ms;
   }
 
   #HatCreator_close_btn:hover,
-  #HatCreator_add_card_btn:hover {
+  #HatCreator_add_card_btn:hover,
+  .HatCreator_card_delete_btn:hover {
     transform: scale(1.1);
   }
 </style>

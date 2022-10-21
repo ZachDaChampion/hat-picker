@@ -12,10 +12,12 @@ export interface ListStore {
 }
 
 export interface InHatStore {
+  uuid: string;
   name: string;
 }
 
 export interface DrawnStore {
+  uuid: string;
   name: string;
   date: Date;
 }
@@ -29,7 +31,7 @@ function read_from_storage(): PermamentStore {
           {
             name: "Example Hat",
             count_per_draw: 1,
-            in_hat: [{ name: "Example Item" }],
+            in_hat: [],
             drawn: [],
           },
         ],
