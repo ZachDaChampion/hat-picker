@@ -59,6 +59,7 @@
 
   #TopBar_dropdown option {
     direction: ltr;
+    transform: scale(1);
   }
 
   #TopBar_add_btn {

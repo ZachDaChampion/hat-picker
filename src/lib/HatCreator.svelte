@@ -87,6 +87,12 @@
             placeholder="Create New Card"
             use:focus_on_me
             bind:innerHTML={card.name}
+            on:keydown={(e) => {
+              if (e.key == "Enter") {
+                e.preventDefault();
+                add_card();
+              }
+            }}
           />
           <button
             class="HatCreator_card_delete_btn"
