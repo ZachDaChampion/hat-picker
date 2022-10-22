@@ -4,6 +4,7 @@
   import TopBar from "./lib/TopBar.svelte";
   import DrawCountSelecter from "./lib/DrawCountSelector.svelte";
   import HatCreator from "./lib/HatCreator.svelte";
+  import CardGrid from "./lib/CardGrid.svelte";
 </script>
 
 <main>
@@ -12,6 +13,7 @@
   <Hat />
   <DrawCountSelecter />
   <HatCreator />
+  <CardGrid />
 </main>
 
 <style>

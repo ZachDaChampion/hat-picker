@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { current_list } from "../store";
+  import { current_list, card_grid_visible, drawn_cards } from "../store";
 
   const hat_orig_width = 1450;
   const jump_duration = 1000;
@@ -17,11 +17,32 @@
   let hat_rect: DOMRect;
   let jumping = false;
 
+  function pick_cards() {
+    let cards: number[] = [];
+    for (
+      let i = 0;
+      i < Math.min($current_list.count_per_draw, $current_list.in_hat.length);
+      i++
+    ) {
+      let card = Math.floor(Math.random() * $current_list.in_hat.length);
+      while (cards.includes(card)) {
+        card = Math.floor(Math.random() * $current_list.in_hat.length);
+      }
+      cards.push(card);
+    }
+    $drawn_cards = cards;
+  }
+
   function jump() {
+    pick_cards();
+    console.log($drawn_cards);
     jumping = true;
     setTimeout(() => {
       sprayAnimation();
     }, jump_duration * 0.2);
+    setTimeout(() => {
+      if ($drawn_cards.length > 0) card_grid_visible.set(true);
+    }, jump_duration * 0.6);
     setTimeout(() => {
       jumping = false;
     }, jump_duration);

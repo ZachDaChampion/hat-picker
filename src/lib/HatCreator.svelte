@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { crossfade, scale } from "svelte/transition";
+  import { scale } from "svelte/transition";
   import { flip } from "svelte/animate";
   import {
     hat_creator_visible,
@@ -8,7 +8,6 @@
   } from "../store";
 
   import { v4 as uuidv4 } from "uuid";
-  import { transition_in, transition_out } from "svelte/internal";
 
   let content;
 

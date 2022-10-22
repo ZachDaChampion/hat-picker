@@ -54,6 +54,9 @@ export const current_list = derived(
 );
 
 export const hat_creator_visible = writable(false);
+export const card_grid_visible = writable(false);
+
+export const drawn_cards = writable<number[]>([]);
 
 persistant_store.subscribe((data) => {
   write_to_storage(data);
