@@ -44,7 +44,7 @@
     id="TopBar_add_btn"
     type="button"
     on:click={() => hat_creator_visible.set(true)}
-    ><img id="TopBar_add_btn_img" src="/add_icon.svg" alt="Add icon" /><span
+    ><img id="TopBar_add_btn_img" src="add_icon.svg" alt="Add icon" /><span
       >Add cards</span
     ></button
   >

@@ -41,7 +41,7 @@
         card_grid_visible.set(false);
       }}
     >
-      <img id="CardGrid_close_btn_img" src="/close_icon.svg" alt="Close icon" />
+      <img id="CardGrid_close_btn_img" src="close_icon.svg" alt="Close icon" />
     </button>
     <div id="CardGrid_content">
       <div class="CardGrid_content_row">
@@ -50,10 +50,10 @@
             <div
               class="CardGrid_card"
               on:click={() => {
-                select_card(i);
+                select_card(card);
               }}
               on:keydown={(e) => {
-                if (parseInt(e.key) === i) select_card(i);
+                if (parseInt(e.key) === i) select_card(card);
               }}
             >
               <div class="CardGrid_card_name">
@@ -70,10 +70,10 @@
               <div
                 class="CardGrid_card"
                 on:click={() => {
-                  select_card(i);
+                  select_card(card);
                 }}
                 on:keydown={(e) => {
-                  if (parseInt(e.key) === i) select_card(i);
+                  if (parseInt(e.key) === i) select_card(card);
                 }}
               >
                 <div class="CardGrid_card_name">

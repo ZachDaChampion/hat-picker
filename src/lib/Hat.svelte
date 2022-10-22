@@ -82,7 +82,7 @@
   onMount(() => {
     const ctx = canvas.getContext("2d");
     const card_img = new Image();
-    card_img.src = "/card.png";
+    card_img.src = "card.png";
     card_img.onload = () => {
       console.log("card img loaded");
     };
@@ -150,7 +150,7 @@
   <img
     bind:this={hat}
     id="Hat_hat"
-    src="/hat.png"
+    src="hat.png"
     alt="Hat"
     class={jumping ? "Hat_jumping" : ""}
     on:click={jump}

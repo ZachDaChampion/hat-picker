@@ -63,7 +63,7 @@
     >
       <img
         id="HatCreator_close_btn_img"
-        src="/close_icon.svg"
+        src="close_icon.svg"
         alt="Close icon"
       />
     </button>
@@ -105,7 +105,7 @@
           >
             <img
               class="HatCreator_card_delete_btn_img"
-              src="/close_icon.svg"
+              src="close_icon.svg"
               alt="Close icon"
             />
           </button>
@@ -115,7 +115,7 @@
         <h2>Add card</h2>
         <img
           id="HatCreator_add_card_btn_img"
-          src="/add_icon.svg"
+          src="add_icon.svg"
           alt="Add icon"
         />
       </button>
